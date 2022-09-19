@@ -1,5 +1,6 @@
 package com.orthofx.CustomerOrderRelation.model;
 import java.util.ArrayList;
+
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +29,7 @@ public class Customer {
 	public List<Order> getOrders() {
 		return orders;
 	}
-	public void ListOrders(List<Order> orders) {
+	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
 	public Long getId() {
