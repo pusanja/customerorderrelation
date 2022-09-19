@@ -1,16 +1,12 @@
 package com.orthofx.CustomerOrderRelation.model;
-
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,19 +15,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="customerTable")
 public class Customer {
+	
 	@JsonIgnore
 	@OneToMany(fetch= FetchType.EAGER, mappedBy="customer")
-    private Set<Order> orders=new HashSet<>();
+    private List<Order> orders=new ArrayList<>();
 	 
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long Id;
 	
-	public Set<Order> getOrders() {
+	public List<Order> getOrders() {
 		return orders;
 	}
-	public void setOrders(Set<Order> orders) {
+	public void ListOrders(List<Order> orders) {
 		this.orders = orders;
 	}
 	public Long getId() {
@@ -47,13 +44,6 @@ public class Customer {
 	@Column(name="lastname")
 	private String lastName;
 
-	/*private Customer Customer;
-	public Customer(Long customerId, String string, String string2) {
-	super();	
-	}*/
-	
-	
-	
 	public String getFirstName() {
 		return firstName;
 	}
